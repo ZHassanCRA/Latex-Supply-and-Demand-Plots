@@ -1,0 +1,71 @@
+\documentclass{standalone}
+\standaloneconfig{border=2mm 2mm 2mm 2mm}
+
+
+%maths
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+
+%tikzpicture
+\usepackage{tikz}
+\usepackage{scalerel}
+\usepackage{pict2e}
+\usepackage{tkz-euclide}
+\usetikzlibrary{calc}
+\usetikzlibrary{patterns,arrows.meta}
+\usetikzlibrary{shadows}
+\usetikzlibrary{external}
+
+%pgfplots
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usepgfplotslibrary{statistics}
+\usepgfplotslibrary{fillbetween}
+
+%colours
+\usepackage{xcolor}
+\usepackage{nicefrac}
+
+\begin{document}
+
+\begin{tikzpicture}
+\begin{axis}[
+            scale = 1.2,
+            xmin = 0, xmax = 10,
+            ymin = 0, ymax = 10,
+            axis lines* = left,
+            xtick = \empty, ytick = \empty,
+            clip = false,
+            axis line style = thick,
+]
+
+% supply and demand
+\addplot[color = violet, very thick] coordinates {(1,9) (9,1)};
+\addplot[color = red, very thick] coordinates {(1,1) (9,9)};
+
+% dashed line to eq'm
+\addplot[color = black, dashed] coordinates{(0,5) (5,5) (5,0)};
+
+% coordinate points
+\addplot [color = black, mark = *, only marks, mark size = 3pt] 
+    coordinates {(5, 5)};
+
+% labels
+\node [right] at (current axis.right of origin) {$Q$};
+\node [above] at (current axis.above origin) {$P$};
+\node [above] at (5, 5.2) {$E$};
+\node [left] at (0, 5) {$p^*$};
+\node [below] at (5, 0) {$q^*$};
+\node [right] at (9, 1) {$D$};
+\node [right] at (9, 9) {$S$};
+
+\end{axis}
+\end{tikzpicture}
+
+\end{document}
+
+
+
+
