@@ -1,0 +1,150 @@
+%\documentclass{standalone}
+%\standaloneconfig{border=2mm 2mm 2mm 2mm}
+%\usepackage{rotating}
+
+\documentclass[12pt]{article}
+\linespread{1.25}
+
+%maths
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+
+
+%tikzpicture
+\usepackage{tikz}
+\usepackage{scalerel}
+\usepackage{pict2e}
+\usepackage{tkz-euclide}
+\usetikzlibrary{calc}
+\usetikzlibrary{patterns,arrows.meta}
+\usetikzlibrary{shadows}
+\usetikzlibrary{external}
+
+%pgfplots
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usepgfplotslibrary{statistics}
+\usepgfplotslibrary{fillbetween}
+
+%colours
+\usepackage{xcolor}
+\usepackage{nicefrac}
+
+\begin{document}
+
+\begin{center}
+\resizebox{.95\textwidth}{!}{%
+\hspace{-3cm}\begin{tikzpicture}
+
+% p1 -----------------------------------------------------
+\begin{axis}[
+            scale = 1,
+            xmin = 0, xmax = 10,
+            ymin = 0, ymax = 10,
+            axis lines* = left,
+            xtick = \empty, ytick = \empty,
+            clip = false,
+            axis line style = thick,
+            ]
+
+% demand only
+\addplot[color = violet, very thick] coordinates {(1,7.5) (18/5,1)};
+\addplot[color = violet, very thick] coordinates {(3,7.5) (28/5,1)};
+
+% labels
+\node [right] at (current axis.right of origin) {$Q$};
+\node [above] at (current axis.above origin) {$P$};
+\node [right] at (18/5, 1) {$D_1$};
+\node [right] at (28/5, 1) {${D_1}'$};
+
+% Arrows
+%\draw[-{Triangle[length = 4mm, width = 2mm]}, red, opacity = 0.3]
+%(2.9, 5) to (4.1, 5);
+
+
+\end{axis}
+
+% p2 --------------------------------------------------------
+\begin{axis}[
+            scale = 1,
+            xmin = 0, xmax = 10,
+            ymin = 0, ymax = 10,
+            axis lines* = left,
+            xtick = \empty, ytick = \empty,
+            clip = false,
+            axis line style = thick,
+            shift = { (axis cs: 12, 0)},
+            ]
+
+% demand only
+\addplot[color = violet, very thick] coordinates {(1,7.5) (18/5,1)};
+\addplot[color = violet, very thick] coordinates {(3,7.5) (28/5,1)};
+
+
+% labels
+\node [right] at (current axis.right of origin) {$Q$};
+\node [above] at (current axis.above origin) {$P$};
+\node [right] at (3.6, 1) {$D_2$};
+\node [right] at (28/5, 1) {${D_2}'$};
+
+
+\end{axis}
+
+
+% p3 ---------------------------------------------------------
+\begin{axis}[
+            scale = 1,
+            xmin = 0, xmax = 11,
+            ymin = 0, ymax = 10,
+            axis lines* = left,
+            xtick = \empty, ytick = \empty,
+            clip = false,
+            axis line style = thick,
+            shift = { (axis cs: 26, 0)},
+            ]
+
+% demand only
+\addplot[color = violet, very thick] coordinates {(2,7.5) (7.55,1)};
+\addplot [color = violet, very thick] coordinates {(4,7.5) (9.55,1)};
+\addplot[color = red, very thick] coordinates {(2,2) (9,9)};
+
+% dashed line to eq'm
+\addplot[color = black, dashed] coordinates{(0,5.6) (5.6,5.6)};
+\addplot[color = black, dashed] coordinates{(0,4.5) (4.5,4.5)};
+
+% eq'm points
+\addplot [color = black, mark = *, only marks, mark size = 2pt] 
+    coordinates {(4.5, 4.5)};
+\addplot [color = black, mark = *, only marks, mark size = 2pt] 
+    coordinates {(5.6, 5.6)};
+
+% labels
+\node [right] at (current axis.right of origin) {$Q$};
+\node [above] at (current axis.above origin) {$P$};
+\node [right] at (7.55,1) {$D_M$};
+\node [right] at (9.55,1, 2) {${D_M}'$};
+\node [right] at (9, 9) {$S$};
+\node [left] at (0, 4.5) {\footnotesize$p^{bf}$};
+\node [left] at (0, 5.6) {\footnotesize$p^{A}$};
+%\node [below] at (5, 0) {$q^*$};
+ % curly brace
+ \draw[grey, decorate, decoration={brace, amplitude=1ex, raise=1ex}]
+ (-.85, 4.5) -- (-.85,5.6) node[pos=.5, left=2.3ex] {\footnotesize premium};
+
+
+
+\end{axis}
+
+
+\end{tikzpicture}\hspace*{-3cm}
+}%
+\end{center}
+
+
+\end{document}
+
+
+
+
