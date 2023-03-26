@@ -1,0 +1,127 @@
+%\documentclass{standalone}
+%\standaloneconfig{border=2mm 2mm 2mm 2mm}
+%\usepackage{rotating}
+
+\documentclass[12pt]{article}
+\linespread{1.25}
+
+%maths
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+
+
+%tikzpicture
+\usepackage{tikz}
+\usepackage{scalerel}
+\usepackage{pict2e}
+\usepackage{tkz-euclide}
+\usetikzlibrary{calc}
+\usetikzlibrary{patterns,arrows.meta}
+\usetikzlibrary{shadows}
+\usetikzlibrary{external}
+
+%pgfplots
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usepgfplotslibrary{statistics}
+\usepgfplotslibrary{fillbetween}
+
+%colours
+\usepackage{xcolor}
+\usepackage{nicefrac}
+
+\begin{document}
+
+\begin{center}
+\resizebox{.95\textwidth}{!}{%
+\hspace{-3cm}\begin{tikzpicture}
+
+% p1 -----------------------------------------------------
+\begin{axis}[
+            scale = 1,
+            xmin = 0, xmax = 10,
+            ymin = 0, ymax = 10,
+            axis lines* = left,
+            xtick = \empty, ytick = \empty,
+            clip = false,
+            axis line style = thick,
+            ]
+
+% demand only
+\addplot[color = violet, very thick] coordinates {(1,7.5) (18/5,1)};
+% labels
+\node [right] at (current axis.right of origin) {$Q$};
+\node [above] at (current axis.above origin) {$P$};
+\node [right] at (18/5,1) {$D_1$};
+
+\end{axis}
+
+% p2 --------------------------------------------------------
+\begin{axis}[
+            scale = 1,
+            xmin = 0, xmax = 10,
+            ymin = 0, ymax = 10,
+            axis lines* = left,
+            xtick = \empty, ytick = \empty,
+            clip = false,
+            axis line style = thick,
+            shift = { (axis cs: 12, 0)},
+            ]
+
+% demand only
+\addplot[color = violet, very thick] coordinates {(1,7.5) (18/5,1)};
+
+% labels
+\node [right] at (current axis.right of origin) {$Q$};
+\node [above] at (current axis.above origin) {$P$};
+\node [right] at (18/5,1) {$D_2$};
+
+\end{axis}
+
+% p3 ---------------------------------------------------------
+\begin{axis}[
+            scale = 1,
+            xmin = 0, xmax = 10,
+            ymin = 0, ymax = 10,
+            axis lines* = left,
+            xtick = \empty, ytick = \empty,
+            clip = false,
+            axis line style = thick,
+            shift = { (axis cs: 25, 0)},
+            ]
+
+% demand only
+\addplot[color = violet, very thick] coordinates {(2,7.5) (7.55,1)};
+\addplot[color = red, very thick] coordinates {(2,2) (9,9)};
+
+% dashed line to eq'm
+\addplot[color = black, dashed] coordinates{(0,4.5) (4.5,4.5) (4.5,0)};
+
+% coordinate points
+\addplot [color = black, mark = *, only marks, mark size = 3pt] 
+    coordinates {(4.5, 4.5)};
+
+% labels
+\node [right] at (current axis.right of origin) {$Q$};
+\node [above] at (current axis.above origin) {$P$};
+\node [right] at (7.55,1) {$D_M$};
+\node [right] at (9, 9) {$S$};
+\node [left] at (0, 4.5) {$p^*$};
+\node [below] at (4.5, 0) {$q^*$};
+
+
+\end{axis}
+
+
+\end{tikzpicture}\hspace*{-3cm}
+}%
+\end{center}
+
+
+\end{document}
+
+
+
+
